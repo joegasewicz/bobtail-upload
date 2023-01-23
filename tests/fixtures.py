@@ -39,7 +39,7 @@ def Image():
                 data=data,
                 mimetype="image/png"
             )
-            req.upload.save(table_name="images", id=1)
+            req.upload.save(table_name="images", pk=1)
             res.set_body(None)
             res.set_status(202)
 

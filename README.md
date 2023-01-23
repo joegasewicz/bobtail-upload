@@ -20,7 +20,7 @@ Bobtail Upload will attach the an Upload API to the request object
 There are 2 methods now available:
 
 - `add(self, *, file_name: str, data: bytes, mimetype: str) -> None`
-- `save(self, *, table_name: str = None, id: Union[int, str] = None) -> None`
+- `save(self, *, table_name: str = None, pk: Union[int, str] = None) -> None`
 
 ```python
 def post(self, req: Request, res: Response):
@@ -54,7 +54,7 @@ def post(self, req: Request, res: Response):
     )
     
     # Use your ORM to save the file to your db & obtain the returned primary key (pk)
-    req.upload.save(table_name="images", id=pk)
+    req.upload.save(table_name="images", pk=pk)
 ```
 
 ### Options

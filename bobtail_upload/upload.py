@@ -1,3 +1,6 @@
+"""
+Upload
+"""
 import os
 from typing import Union
 
@@ -5,10 +8,19 @@ from bobtail import AbstractMiddleware, Request, Response, Tail
 
 
 class BobtailUploadError(Exception):
-    pass
+    """
+    BobtailUploadError
+    """
 
 
 class Upload:
+    """
+    Upload
+    """
+
+    file_name: str
+    data: bytes
+    mimetype: str
 
     def __init__(self, options):
         self.options = options
@@ -25,24 +37,23 @@ class Upload:
         self.data = data
         self.mimetype = mimetype
 
-    def _create_path(self, table_name: str, id: Union[int, str]) -> str:
+    def _create_path(self, table_name: str, pk: Union[int, str]) -> str:
         base_path = self.options['UPLOAD_DIR']
-        if table_name and id:
-            dir_path = f"{base_path}/{table_name}/{id}/"
+        if table_name and pk:
+            dir_path = f"{base_path}/{table_name}/{pk}/"
             os.makedirs(os.path.dirname(dir_path), exist_ok=True)
             return f"{dir_path}{self.file_name}"
-        else:
-            return f"{base_path}/{self.file_name}"
+        return f"{base_path}/{self.file_name}"
 
-    def save(self, *, table_name: str = None, id: Union[int, str] = None) -> None:
+    def save(self, *, table_name: str = None, pk: Union[int, str] = None) -> None:
         """
-        Saves the file with optional table name & id path
+        Saves the file with optional table name & pk path
         :param table_name:
-        :param id:
+        :param pk:
         :return:
         """
         try:
-            with open(self._create_path(table_name, id), "wb") as f:
+            with open(self._create_path(table_name, pk), "wb") as f:
                 f.write(self.data)
             self._clean_up()
         except Exception as exc:
@@ -56,7 +67,9 @@ class Upload:
 
 
 class BobtailUpload(AbstractMiddleware):
-
+    """
+    BobtailUpload
+    """
     options = {
         "UPLOAD_DIR": "uploads",
     }
