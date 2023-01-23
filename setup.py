@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 setup(
     name="bobtail-upload",
     version="0.0.1",
-    description="Logging middleware for Bobtail",
+    description="File Uploads for Bobtail",
     packages=["bobtail_upload"],
     py_modules=["bobtail_upload"],
     install_requires=[

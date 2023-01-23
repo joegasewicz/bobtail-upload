@@ -1,3 +1,6 @@
+[![Python package](https://github.com/joegasewicz/bobtail-upload/actions/workflows/python-package.yml/badge.svg)](https://github.com/joegasewicz/bobtail-upload/actions/workflows/python-package.yml)
+[![Upload Python Package](https://github.com/joegasewicz/bobtail-upload/actions/workflows/python-publish.yml/badge.svg)](https://github.com/joegasewicz/bobtail-upload/actions/workflows/python-publish.yml)
+
 # Bobtail File Upload
 Middleware to upload files for [Bobtail](https://github.com/joegasewicz/bobtail)
 
