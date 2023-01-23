@@ -19,8 +19,8 @@ app.use(BobtailUpload(options={}))
 ```
 
 ### Saving files
-Bobtail Upload will attach the an Upload API to the request object
-There are 2 methods now available:
+Bobtail Upload will attach the Upload API to the request object.
+There are 2 new methods now available on `Request`:
 
 - `add(self, *, file_name: str, data: bytes, mimetype: str) -> None`
 - `save(self, *, table_name: str = None, pk: Union[int, str] = None) -> None`
